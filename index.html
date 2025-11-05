@@ -5,15 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Conexão de Ofertas — NexumUp</title>
   <meta name="description" content="Conexão de Ofertas NexumUp — promoções de 24h. Conecte-se antes do corte."/>
-  <link rel="shortcut icon" href="logo/ChatGPT Image degra.png" type="image/x-icon">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
       --bg: #0a0f1c;
       --panel: #0e1720;
-      --accent: #fa58b6; /* rosa NexumUp */
-      --accent-secondary: #7a0bc0; /* roxo NexumUp */
-      --urgent: #ff4757; /* vermelho para alertas */
+      --accent: #fa58b6;
+      --accent-secondary: #7a0bc0;
+      --urgent: #ff4757;
       --muted: #9aa6b2;
       --glass: rgba(255,255,255,0.03);
       --white: #ffffff;
@@ -39,7 +38,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 48px 20px;
+      padding: 20px;
     }
 
     .card {
@@ -48,11 +47,11 @@
       background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
       border-radius: 16px;
       box-shadow: var(--shadow);
-      padding: 36px;
+      padding: 30px;
       box-sizing: border-box;
       display: grid;
-      grid-template-columns: 1fr 420px;
-      gap: 28px;
+      grid-template-columns: 1fr;
+      gap: 24px;
       align-items: start;
       position: relative;
       overflow: hidden;
@@ -69,23 +68,55 @@
       background: linear-gradient(90deg, var(--urgent), #ff6b81);
     }
 
-    /* Left / main column */
-    .panel-main {
-      padding: 6px 6px 6px 6px;
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
     }
     
+    .logo img {
+      width: 50px;
+      height: 50px;
+      border-radius: 10px;
+      object-fit: contain;
+    }
+    
+    .logo-text {
+      font-size: 28px;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Localização */
+    .location-badge {
+      background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 12px rgba(250, 88, 182, 0.3);
+    }
+
     .alert-head {
       display: flex;
       gap: 12px;
       align-items: center;
       font-weight: 700;
       letter-spacing: 0.3px;
-      font-size: 20px;
+      font-size: 18px;
     }
     
     .alert-icon {
-      width: 48px;
-      height: 48px;
+      width: 44px;
+      height: 44px;
       border-radius: 8px;
       background: linear-gradient(180deg, var(--urgent), #ff6b81);
       display: flex;
@@ -93,37 +124,61 @@
       justify-content: center;
       color: var(--white);
       font-weight: 800;
-      font-size: 22px;
+      font-size: 20px;
       box-shadow: 0 6px 14px rgba(0,0,0,0.35) inset;
     }
 
     .title {
-      margin-top: 18px;
+      margin-top: 16px;
       display: flex;
-      align-items: baseline;
-      gap: 18px;
+      flex-direction: column;
+      gap: 16px;
     }
     
     .big-amount {
-      font-size: 42px;
+      font-size: 36px;
       font-weight: 800;
       color: var(--urgent);
       border: 2px solid rgba(255, 71, 87, 0.14);
-      padding: 10px 18px;
+      padding: 12px 20px;
       border-radius: 8px;
       display: inline-block;
       background: rgba(255, 71, 87, 0.05);
+      text-align: center;
+      width: fit-content;
     }
 
     .message {
-      margin-top: 18px;
-      font-size: 18px;
+      margin-top: 16px;
+      font-size: 16px;
       color: var(--white);
-      line-height: 1.35;
+      line-height: 1.4;
     }
     
     .message strong { 
       color: var(--urgent); 
+    }
+
+    .status-indicator {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--urgent);
+      animation: blink 2s infinite;
+    }
+    
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0.3; }
     }
 
     .countdown {
@@ -136,18 +191,18 @@
     
     .clock {
       background: var(--card);
-      padding: 10px 14px;
+      padding: 12px 16px;
       border-radius: 10px;
       font-weight: 700;
-      font-size: 20px;
+      font-size: 18px;
       color: var(--urgent);
-      min-width: 150px;
       text-align: center;
       border: 1px solid rgba(255,255,255,0.05);
+      min-width: 140px;
     }
 
     .cta-group {
-      margin-top: 22px;
+      margin-top: 24px;
       display: flex;
       gap: 12px;
       align-items: center;
@@ -157,7 +212,7 @@
     .btn {
       background: linear-gradient(180deg, var(--urgent), #ff6b81);
       color: white;
-      padding: 12px 18px;
+      padding: 14px 20px;
       border-radius: 10px;
       font-weight: 700;
       border: 0;
@@ -165,9 +220,13 @@
       text-decoration: none;
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 10px;
       box-shadow: 0 8px 18px rgba(255, 71, 87, 0.18);
       transition: all 0.3s ease;
+      flex: 1;
+      min-width: 200px;
+      position: relative;
     }
     
     .btn:hover {
@@ -188,35 +247,51 @@
       color: var(--white);
     }
 
-    /* Offers column */
-    .panel-side {
-      padding: 8px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.02));
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.03);
+    /* Animação de pulso para o botão principal */
+    .btn.pulse {
+      animation: btnPulse 2s infinite;
+    }
+    
+    @keyframes btnPulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 8px 18px rgba(255, 71, 87, 0.18);
+      }
+      50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 25px rgba(255, 71, 87, 0.6), 0 8px 25px rgba(255, 71, 87, 0.3);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 8px 18px rgba(255, 71, 87, 0.18);
+      }
+    }
+
+    .offers-section {
+      margin-top: 20px;
     }
     
     .offers-title { 
-      font-size: 14px;
+      font-size: 16px;
       color: var(--muted); 
       font-weight: 700; 
-      margin-bottom: 12px; 
+      margin-bottom: 16px; 
       text-transform: uppercase; 
       letter-spacing: 0.8px;
     }
     
     .offers-grid {
       display: grid;
-      gap: 12px;
+      gap: 16px;
       grid-template-columns: 1fr;
     }
     
     .offer {
-      padding: 12px;
+      padding: 16px;
       background: var(--glass);
-      border-radius: 10px;
+      border-radius: 12px;
       display: flex;
-      gap: 12px;
+      gap: 16px;
       align-items: center;
       justify-content: space-between;
       transition: all 0.3s ease;
@@ -230,89 +305,73 @@
     
     .offer .left { 
       display: flex; 
-      gap: 12px; 
+      gap: 16px; 
       align-items: center; 
+      flex: 1;
     }
     
-    .badge {
-      width: 56px;
-      height: 56px;
+    .product-image {
+      width: 80px;
+      height: 80px;
       border-radius: 10px;
-      background: #0a141a;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      color: var(--urgent);
-      border: 1px solid rgba(255,255,255,0.03);
+      object-fit: cover;
+      border: 2px solid rgba(255,255,255,0.1);
+      flex-shrink: 0;
+    }
+    
+    .product-info {
+      flex: 1;
     }
     
     .offer h4 { 
-      margin: 0; 
+      margin: 0 0 8px 0; 
       font-size: 16px;
+      line-height: 1.3;
+      color: var(--white);
+    }
+    
+    .price-info {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    
+    .old-price {
+      text-decoration: line-through;
+      margin-right: 8px;
+    }
+    
+    .new-price {
+      color: var(--urgent);
+      font-weight: 800;
     }
     
     .price { 
       font-weight: 800;
       color: var(--white); 
       text-align: right;
-    }
-    
-    .price small { 
-      display: block; 
-      font-size: 12px; 
-      color: var(--muted); 
-      font-weight: 600;
-      text-decoration: line-through;
+      font-size: 18px;
+      margin-bottom: 8px;
     }
     
     .offer .btn { 
-      padding: 8px 12px;
+      padding: 10px 16px;
       font-size: 14px;
+      min-width: 120px;
+      flex: 0 0 auto;
     }
 
-    /* bottom helper line / QR section full width */
-    .qr-row {
-      grid-column: 1 / -1;
-      margin-top: 18px;
-      display: flex;
-      gap: 18px;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
-    
-    .qr {
-      background: #fff;
-      padding: 10px;
-      border-radius: 8px;
-      display: inline-block;
-    }
-    
-    .qr img { 
-      width: 120px; 
-      height: 120px; 
-      display: block; 
-    }
-
-    .helper {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    /* footer faint "primeira via" */
     .footer-line {
-      margin-top: 20px;
+      margin-top: 24px;
       width: 100%;
       display: flex;
-      justify-content: flex-end;
+      justify-content: space-between;
       align-items: center;
       gap: 8px;
     }
     
     .dotted { 
       border-top: 2px dashed rgba(255,255,255,0.06); 
-      width: 70%; 
+      flex: 1;
       opacity: 0.6; 
     }
     
@@ -320,76 +379,18 @@
       color: rgba(255,255,255,0.18); 
       font-weight: 700; 
       padding: 6px 8px; 
+      font-size: 12px;
     }
 
-    /* Product images in offers */
-    .product-img {
-      width: 56px;
-      height: 56px;
-      border-radius: 10px;
-      object-fit: cover;
-      background: #0a141a;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
+    .location-footer {
       color: var(--accent);
-      border: 1px solid rgba(255,255,255,0.03);
-    }
-    
-    .product-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 10px;
-    }
-
-    /* Logo styling */
-    .logo {
+      font-weight: 700;
+      font-size: 12px;
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-    
-    .logo img {
-      width: 40px;
-      height: 40px;
-      border-radius: 8px;
-    }
-    
-    .logo-text {
-      font-size: 24px;
-      font-weight: 900;
-      background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      gap: 6px;
     }
 
-    /* Status indicator */
-    .status-indicator {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 10px;
-      font-size: 14px;
-      color: var(--muted);
-    }
-    
-    .status-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--urgent);
-      animation: blink 2s infinite;
-    }
-    
-    @keyframes blink {
-      0%, 50% { opacity: 1; }
-      51%, 100% { opacity: 0.3; }
-    }
-
-    /* Pulse animation for urgency */
     @keyframes pulse {
       0% { transform: scale(1); }
       50% { transform: scale(1.05); }
@@ -400,37 +401,149 @@
       animation: pulse 2s infinite;
     }
 
-    /* responsive */
-    @media (max-width: 980px) {
-      .card { 
-        grid-template-columns: 1fr; 
-        padding: 20px; 
-        gap: 14px;
+    @media (min-width: 768px) {
+      .card {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        padding: 36px;
       }
       
-      .panel-side { 
-        order: 2; 
+      .logo, .location-badge {
+        grid-column: 1 / -1;
+      }
+      
+      .alert-head {
+        font-size: 20px;
+      }
+      
+      .alert-icon {
+        width: 48px;
+        height: 48px;
+        font-size: 22px;
       }
       
       .title {
-        flex-direction: column;
+        flex-direction: row;
         align-items: flex-start;
       }
       
-      .qr-row {
-        flex-direction: column;
-        align-items: flex-start;
+      .big-amount {
+        font-size: 42px;
       }
-    }
-    
-    @media (max-width: 480px) {
-      .cta-group {
-        flex-direction: column;
-        align-items: stretch;
+      
+      .message {
+        font-size: 18px;
+      }
+      
+      .clock {
+        font-size: 20px;
+        min-width: 150px;
       }
       
       .btn {
+        flex: 0 1 auto;
+        min-width: auto;
+      }
+      
+      .offers-section {
+        margin-top: 0;
+      }
+      
+      .offer h4 {
+        font-size: 17px;
+      }
+      
+      .product-image {
+        width: 100px;
+        height: 100px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .wrap {
+        padding: 15px;
+      }
+      
+      .card {
+        padding: 20px;
+      }
+      
+      .logo {
+        gap: 10px;
+      }
+      
+      .logo img {
+        width: 40px;
+        height: 40px;
+      }
+      
+      .logo-text {
+        font-size: 22px;
+      }
+      
+      .location-badge {
+        font-size: 12px;
+        padding: 6px 12px;
+      }
+      
+      .alert-head {
+        font-size: 16px;
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+      }
+      
+      .big-amount {
+        font-size: 28px;
+        padding: 10px 16px;
+      }
+      
+      .message {
+        font-size: 15px;
+        text-align: center;
+      }
+      
+      .status-indicator {
         justify-content: center;
+        text-align: center;
+      }
+      
+      .countdown {
+        justify-content: center;
+      }
+      
+      .cta-group {
+        flex-direction: column;
+      }
+      
+      .btn {
+        width: 100%;
+      }
+      
+      .offer {
+        flex-direction: column;
+        text-align: center;
+        gap: 16px;
+      }
+      
+      .offer .left {
+        flex-direction: column;
+        gap: 12px;
+      }
+      
+      .offer .btn {
+        width: 100%;
+      }
+      
+      .product-image {
+        width: 120px;
+        height: 120px;
+      }
+      
+      .footer-line {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
       }
     }
   </style>
@@ -438,12 +551,17 @@
 <body>
   <div class="wrap">
     <main class="card" role="main" aria-labelledby="main-title">
+      <div class="logo">
+        <img src="logo-nexum.png" alt="Logo NexumUp">
+        <div class="logo-text">NEXUMUP</div>
+      </div>
+
+      <div class="location-badge">
+        <i class="fas fa-map-marker-alt"></i>
+        OFERTA EXCLUSIVA PARA CORONEL JOÃO SÁ - BA
+      </div>
+
       <section class="panel-main" aria-describedby="desc">
-        <div class="logo">
-          <img src="logo/ChatGPT Image degra.png" alt="Logo NexumUp">
-          <div class="logo-text">NEXUMUP</div>
-        </div>
-        
         <div class="alert-head">
           <div class="alert-icon pulse" aria-hidden="true"><i class="fas fa-exclamation-triangle"></i></div>
           <div>
@@ -452,7 +570,7 @@
           </div>
         </div>
 
-        <div class="title" style="margin-top:18px">
+        <div class="title">
           <div class="big-amount" aria-live="polite">R$ -1.500,00</div>
           <div style="flex:1">
             <div class="message" id="desc">
@@ -465,119 +583,123 @@
               <span>Conexão instável - Ofertas podem expirar a qualquer momento</span>
             </div>
             
-            <div class="countdown" aria-hidden="false">
+            <div class="countdown">
               <div class="clock" id="countdownDisplay" role="timer" aria-atomic="true">00:24:00</div>
             </div>
 
             <div class="cta-group">
-              <a class="btn" id="mainCta" href="#" target="_blank" rel="noopener">
+              <a class="btn pulse" id="mainCta" href="https://wa.me/5517982157517?text=Quero%20participar%20da%20Conex%C3%A3o%20%F0%9F%A4%A9%E2%9C%A8" target="_blank" rel="noopener">
                 <i class="fas fa-bolt"></i> Restabelecer Conexão
               </a>
-              <a class="btn ghost" id="secondaryCta" href="#offers">
+              <a class="btn ghost" href="#offers">
                 <i class="fas fa-wifi"></i> Verificar Sinal
               </a>
             </div>
           </div>
         </div>
-
-        <div class="qr-row" style="margin-top:12px">
-          <div class="qr" aria-hidden="false" title="QR code para restabelecer conexão">
-            <img id="qrImg" alt="QR code" src="" />
-          </div>
-          <div class="helper" style="flex:1">
-            <div style="font-weight:700;color:var(--muted)">Instruções para restabelecer a conexão</div>
-            <div style="margin-top:8px;color:var(--muted)">Escaneie o código abaixo ou clique em <strong>Restabelecer Conexão</strong> para acessar as ofertas exclusivas.</div>
-          </div>
-        </div>
-
-        <div class="footer-line" role="contentinfo">
-          <div class="dotted" aria-hidden="true"></div>
-          <div class="prim-via">CONEXÃO INSTÁVEL</div>
-        </div>
-
       </section>
 
-      <aside class="panel-side" aria-label="Ofertas">
+      <section class="offers-section" id="offers" aria-label="Ofertas">
         <div class="offers-title">Produtos na conexão (24h)</div>
-        <div class="offers-grid" id="offersGrid">
-          <!-- JS will populate offers -->
+        <div class="offers-grid">
+          
+          <div class="offer">
+            <div class="left">
+              <img src="001.png" 
+                   alt="Smart Watch T800 Ultra 2 Series 9" class="product-image">
+              <div class="product-info">
+                <h4>Smart Watch T800 Ultra 2 Series 9</h4>
+                <div class="price-info">
+                  <span class="old-price">R$ 115,00</span>
+                  <span class="new-price">R$ 85,90</span>
+                </div>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px">
+              <div class="price">R$ 85,90</div>
+              <a class="btn" href="https://wa.me/5517982157517?text=Quero%20participar%20da%20Conex%C3%A3o%20%F0%9F%A4%A9%E2%9C%A8" target="_blank" rel="noopener">
+                <i class="fas fa-download"></i> Conectar
+              </a>
+            </div>
+          </div>
+
+          <div class="offer">
+            <div class="left">
+              <img src="002.png" 
+                   alt="Sofá Retrátil 3 Lugares" class="product-image">
+              <div class="product-info">
+                <h4>Lavajato 48V Pistola Lavadora Portátil De Alta Pressão</h4>
+                <div class="price-info">
+                  <span class="old-price">R$ 200,00</span>
+                  <span class="new-price">R$ 175,90</span>
+                </div>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px">
+              <div class="price">R$ 175,90</div>
+              <a class="btn" href="https://wa.me/5517982157517?text=Quero%20participar%20da%20Conex%C3%A3o%20%F0%9F%A4%A9%E2%9C%A8" target="_blank" rel="noopener">
+                <i class="fas fa-download"></i> Conectar
+              </a>
+            </div>
+          </div>
+
+          <div class="offer">
+            <div class="left">
+              <img src="003.png" 
+                   alt="Micro-ondas 34L Espelhado" class="product-image">
+              <div class="product-info">
+                <h4>Caixa de som Go 3 Bluetooth portátil à prova de água</h4>
+                <div class="price-info">
+                  <span class="old-price">R$ 100,00</span>
+                  <span class="new-price">R$ 75,90</span>
+                </div>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px">
+              <div class="price">R$ 75,90</div>
+              <a class="btn" href="https://wa.me/5517982157517?text=Quero%20participar%20da%20Conex%C3%A3o%20%F0%9F%A4%A9%E2%9C%A8" target="_blank" rel="noopener">
+                <i class="fas fa-download"></i> Conectar
+              </a>
+            </div>
+          </div>
+
+          <div class="offer">
+            <div class="left">
+              <img src="004.png" 
+                   alt="Cama Box Casal Fenix" class="product-image">
+              <div class="product-info">
+                <h4>Smart TV 4K 43" LG UHD Ger8 AI Alexa integrado</h4>
+                <div class="price-info">
+                  <span class="old-price">R$ 2.499,00</span>
+                  <span class="new-price">R$ 2.295,90</span>
+                </div>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px">
+              <div class="price">R$ 2.295,90</div>
+              <a class="btn" href="https://wa.me/5517982157517?text=Quero%20participar%20da%20Conex%C3%A3o%20%F0%9F%A4%A9%E2%9C%A8" target="_blank" rel="noopener">
+                <i class="fas fa-download"></i> Conectar
+              </a>
+            </div>
+          </div>
+
         </div>
-      </aside>
+      </section>
+
+      <div class="footer-line" role="contentinfo">
+        <div class="location-footer">
+          <i class="fas fa-map-pin"></i>
+          EXCLUSIVO CORONEL JOÃO SÁ - BA
+        </div>
+        <div class="dotted" aria-hidden="true"></div>
+        <div class="prim-via">CONEXÃO INSTÁVEL</div>
+      </div>
     </main>
   </div>
 
   <script>
-    /********* CONFIG *********/
-    // Coloque aqui o link do WhatsApp ou página de checkout
-    const CTA_LINK = "https://wa.me/5517982157517?text=Quero%20restabelecer%20minha%20conexão%20com%20as%20ofertas%20NexumUp";
-    
-    // Produtos da NexumUp
-    const offers = [
-      { 
-        title: "Smart TV 65'' 4K", 
-        oldPrice: "R$ 3.555,00", 
-        newPrice: "R$ 2.999,00", 
-        link: "https://wa.me/5517982157517?text=Tenho%20interesse%20na%20Smart%20TV%2065%22%204K",
-        image: "https://i.ibb.co/4nYPDYSm/1.webp"
-      },
-      { 
-        title: "Sofá Retrátil 3 Lugares", 
-        oldPrice: "R$ 1.690,00", 
-        newPrice: "R$ 1.290,00", 
-        link: "https://wa.me/5517982157517?text=Tenho%20interesse%20no%20Sofá%20Retrátil",
-        image: "https://i.ibb.co/9mQW3WQ6/c1.png"
-      },
-      { 
-        title: "Micro-ondas 34L Espelhado", 
-        oldPrice: "R$ 927,00", 
-        newPrice: "R$ 799,00", 
-        link: "https://wa.me/5517982157517?text=Tenho%20interesse%20no%20Micro-ondas%2034L",
-        image: "https://i.ibb.co/cfxmcnV/m1.webp"
-      },
-      { 
-        title: "Cama Box Casal Fenix", 
-        oldPrice: "R$ 1.050,00", 
-        newPrice: "R$ 849,00", 
-        link: "https://wa.me/5517982157517?text=Tenho%20interesse%20na%20Cama%20Box%20Casal",
-        image: "https://i.ibb.co/9mQW3WQ6/c1.png"
-      }
-    ];
-    /*************************/
-
-    // Set CTA links
-    document.getElementById('mainCta').href = CTA_LINK;
-
-    // Populate offers
-    const grid = document.getElementById('offersGrid');
-    offers.forEach((o, i) => {
-      const el = document.createElement('div');
-      el.className = 'offer';
-      el.innerHTML = `
-        <div class="left">
-          <div class="badge">
-            <i class="fas fa-signal"></i>
-          </div>
-          <div>
-            <h4>${o.title}</h4>
-            <div style="color:var(--muted);font-size:13px;margin-top:4px">
-              <span style="text-decoration: line-through;">${o.oldPrice}</span> 
-              <span style="color:var(--urgent);font-weight:800;margin-left:8px">${o.newPrice}</span>
-            </div>
-          </div>
-        </div>
-        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
-          <div class="price">${o.newPrice}</div>
-          <a class="btn" href="${o.link}" target="_blank" rel="noopener">
-            <i class="fas fa-download"></i> Conectar
-          </a>
-        </div>
-      `;
-      grid.appendChild(el);
-    });
-
-    // Countdown: 24h from page load
     const start = Date.now();
-    const end = start + 24*60*60*1000; // 24h later
+    const end = start + 24*60*60*1000;
     const cdDisplay = document.getElementById('countdownDisplay');
 
     function updateCountdown(){
@@ -589,14 +711,12 @@
       const secs = Math.floor((diff % (1000*60)) / 1000);
       cdDisplay.textContent = `${String(hrs).padStart(2,'0')}:${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}`;
       
-      // Update color based on time remaining
       if(hrs < 1) {
         cdDisplay.style.color = 'var(--urgent)';
         cdDisplay.classList.add('pulse');
       }
       
       if(diff === 0){
-        // when timer ends
         document.getElementById('mainCta').classList.add('ghost');
         document.getElementById('mainCta').innerHTML = '<i class="fas fa-unlink"></i> CONEXÃO PERDIDA';
       }
@@ -605,13 +725,6 @@
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    // QR code generation
-    const qrImg = document.getElementById('qrImg');
-    const qrTarget = CTA_LINK;
-    const encoded = encodeURIComponent(qrTarget);
-    qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=${encoded}&margin=0`;
-
-    // Simulate connection status changes
     function simulateConnectionIssues() {
       const statusDot = document.querySelector('.status-dot');
       const statusText = document.querySelector('.status-indicator span');
@@ -632,12 +745,6 @@
     }
     
     simulateConnectionIssues();
-
-    // Accessibility: focus main CTA on load for keyboard users
-    window.addEventListener('load', () => {
-      const btn = document.getElementById('mainCta');
-      if(btn) btn.focus({preventScroll:true});
-    });
   </script>
 </body>
 </html>
