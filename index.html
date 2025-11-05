@@ -47,11 +47,11 @@
       background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
       border-radius: 16px;
       box-shadow: var(--shadow);
-      padding: 30px;
+      padding: 36px;
       box-sizing: border-box;
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 24px;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
       align-items: start;
       position: relative;
       overflow: hidden;
@@ -73,6 +73,7 @@
       align-items: center;
       gap: 12px;
       margin-bottom: 10px;
+      grid-column: 1 / -1;
     }
     
     .logo img {
@@ -103,6 +104,7 @@
       gap: 8px;
       margin-bottom: 15px;
       box-shadow: 0 4px 12px rgba(250, 88, 182, 0.3);
+      grid-column: 1 / -1;
     }
 
     .alert-head {
@@ -111,12 +113,12 @@
       align-items: center;
       font-weight: 700;
       letter-spacing: 0.3px;
-      font-size: 18px;
+      font-size: 20px;
     }
     
     .alert-icon {
-      width: 44px;
-      height: 44px;
+      width: 48px;
+      height: 48px;
       border-radius: 8px;
       background: linear-gradient(180deg, var(--urgent), #ff6b81);
       display: flex;
@@ -124,19 +126,20 @@
       justify-content: center;
       color: var(--white);
       font-weight: 800;
-      font-size: 20px;
+      font-size: 22px;
       box-shadow: 0 6px 14px rgba(0,0,0,0.35) inset;
     }
 
     .title {
       margin-top: 16px;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       gap: 16px;
+      align-items: flex-start;
     }
     
     .big-amount {
-      font-size: 36px;
+      font-size: 42px;
       font-weight: 800;
       color: var(--urgent);
       border: 2px solid rgba(255, 71, 87, 0.14);
@@ -150,7 +153,7 @@
 
     .message {
       margin-top: 16px;
-      font-size: 16px;
+      font-size: 18px;
       color: var(--white);
       line-height: 1.4;
     }
@@ -194,11 +197,11 @@
       padding: 12px 16px;
       border-radius: 10px;
       font-weight: 700;
-      font-size: 18px;
+      font-size: 20px;
       color: var(--urgent);
       text-align: center;
       border: 1px solid rgba(255,255,255,0.05);
-      min-width: 140px;
+      min-width: 150px;
     }
 
     .cta-group {
@@ -224,7 +227,7 @@
       gap: 10px;
       box-shadow: 0 8px 18px rgba(255, 71, 87, 0.18);
       transition: all 0.3s ease;
-      flex: 1;
+      flex: 0 1 auto;
       min-width: 200px;
       position: relative;
     }
@@ -247,7 +250,7 @@
       color: var(--white);
     }
 
-    /* Animação de pulso para o botão principal */
+    /* Animação de pulso para PC */
     .btn.pulse {
       animation: btnPulse 2s infinite;
     }
@@ -268,7 +271,7 @@
     }
 
     .offers-section {
-      margin-top: 20px;
+      margin-top: 0;
     }
     
     .offers-title { 
@@ -311,8 +314,8 @@
     }
     
     .product-image {
-      width: 80px;
-      height: 80px;
+      width: 100px;
+      height: 100px;
       border-radius: 10px;
       object-fit: cover;
       border: 2px solid rgba(255,255,255,0.1);
@@ -325,7 +328,7 @@
     
     .offer h4 { 
       margin: 0 0 8px 0; 
-      font-size: 16px;
+      font-size: 17px;
       line-height: 1.3;
       color: var(--white);
     }
@@ -367,6 +370,7 @@
       justify-content: space-between;
       align-items: center;
       gap: 8px;
+      grid-column: 1 / -1;
     }
     
     .dotted { 
@@ -401,75 +405,21 @@
       animation: pulse 2s infinite;
     }
 
-    @media (min-width: 768px) {
-      .card {
-        grid-template-columns: 1fr 1fr;
-        gap: 30px;
-        padding: 36px;
-      }
-      
-      .logo, .location-badge {
-        grid-column: 1 / -1;
-      }
-      
-      .alert-head {
-        font-size: 20px;
-      }
-      
-      .alert-icon {
-        width: 48px;
-        height: 48px;
-        font-size: 22px;
-      }
-      
-      .title {
-        flex-direction: row;
-        align-items: flex-start;
-      }
-      
-      .big-amount {
-        font-size: 42px;
-      }
-      
-      .message {
-        font-size: 18px;
-      }
-      
-      .clock {
-        font-size: 20px;
-        min-width: 150px;
-      }
-      
-      .btn {
-        flex: 0 1 auto;
-        min-width: auto;
-      }
-      
-      .offers-section {
-        margin-top: 0;
-      }
-      
-      .offer h4 {
-        font-size: 17px;
-      }
-      
-      .product-image {
-        width: 100px;
-        height: 100px;
-      }
-    }
-
-    @media (max-width: 480px) {
+    /* Mobile styles */
+    @media (max-width: 767px) {
       .wrap {
         padding: 15px;
       }
       
       .card {
+        grid-template-columns: 1fr;
+        gap: 20px;
         padding: 20px;
       }
       
       .logo {
         gap: 10px;
+        margin-bottom: 8px;
       }
       
       .logo img {
@@ -484,6 +434,7 @@
       .location-badge {
         font-size: 12px;
         padding: 6px 12px;
+        margin-bottom: 12px;
       }
       
       .alert-head {
@@ -491,6 +442,18 @@
         flex-direction: column;
         text-align: center;
         gap: 8px;
+      }
+      
+      .alert-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 20px;
+      }
+      
+      .title {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
       }
       
       .big-amount {
@@ -506,24 +469,65 @@
       .status-indicator {
         justify-content: center;
         text-align: center;
+        font-size: 13px;
       }
       
       .countdown {
         justify-content: center;
       }
       
+      .clock {
+        font-size: 18px;
+        min-width: 140px;
+        padding: 10px 14px;
+      }
+      
       .cta-group {
         flex-direction: column;
+        gap: 10px;
       }
       
       .btn {
         width: 100%;
+        max-width: 280px;
+        font-size: 14px;
+        padding: 12px 18px;
+      }
+      
+      /* Animação de pulso mais suave para mobile */
+      .btn.pulse {
+        animation: btnPulseMobile 2s infinite;
+      }
+      
+      @keyframes btnPulseMobile {
+        0% {
+          transform: scale(1);
+          box-shadow: 0 8px 18px rgba(255, 71, 87, 0.18);
+        }
+        50% {
+          transform: scale(1.02);
+          box-shadow: 0 0 20px rgba(255, 71, 87, 0.4), 0 8px 20px rgba(255, 71, 87, 0.25);
+        }
+        100% {
+          transform: scale(1);
+          box-shadow: 0 8px 18px rgba(255, 71, 87, 0.18);
+        }
+      }
+      
+      .offers-section {
+        margin-top: 20px;
+      }
+      
+      .offers-title {
+        font-size: 14px;
+        text-align: center;
       }
       
       .offer {
         flex-direction: column;
         text-align: center;
-        gap: 16px;
+        gap: 12px;
+        padding: 14px;
       }
       
       .offer .left {
@@ -531,8 +535,8 @@
         gap: 12px;
       }
       
-      .offer .btn {
-        width: 100%;
+      .offer h4 {
+        font-size: 15px;
       }
       
       .product-image {
@@ -540,10 +544,28 @@
         height: 120px;
       }
       
+      .price {
+        text-align: center;
+        font-size: 16px;
+      }
+      
+      .offer .btn {
+        width: 100%;
+        max-width: 200px;
+      }
+      
       .footer-line {
         flex-direction: column;
         gap: 10px;
         text-align: center;
+      }
+      
+      .dotted {
+        width: 100%;
+      }
+      
+      .prim-via, .location-footer {
+        font-size: 11px;
       }
     }
   </style>
@@ -626,7 +648,7 @@
           <div class="offer">
             <div class="left">
               <img src="002.png" 
-                   alt="Sofá Retrátil 3 Lugares" class="product-image">
+                   alt="Lavajato 48V Pistola Lavadora" class="product-image">
               <div class="product-info">
                 <h4>Lavajato 48V Pistola Lavadora Portátil De Alta Pressão</h4>
                 <div class="price-info">
@@ -646,7 +668,7 @@
           <div class="offer">
             <div class="left">
               <img src="003.png" 
-                   alt="Micro-ondas 34L Espelhado" class="product-image">
+                   alt="Caixa de som Go 3" class="product-image">
               <div class="product-info">
                 <h4>Caixa de som Go 3 Bluetooth portátil à prova de água</h4>
                 <div class="price-info">
@@ -666,7 +688,7 @@
           <div class="offer">
             <div class="left">
               <img src="004.png" 
-                   alt="Cama Box Casal Fenix" class="product-image">
+                   alt="Smart TV 4K 43" class="product-image">
               <div class="product-info">
                 <h4>Smart TV 4K 43" LG UHD Ger8 AI Alexa integrado</h4>
                 <div class="price-info">
