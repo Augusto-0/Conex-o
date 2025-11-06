@@ -24,7 +24,7 @@
     }
     
     html, body {
-      height: 100%;
+      height: auto;
       margin: 0;
       background: linear-gradient(180deg, #050a14 0%, #0a0f1c 60%);
       color: var(--white);
@@ -35,9 +35,7 @@
 
     .wrap {
       min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: block;
       padding: 20px;
     }
 
@@ -56,6 +54,7 @@
       position: relative;
       overflow: hidden;
       border: 1px solid rgba(255,255,255,0.05);
+      margin: 0 auto;
     }
 
     .card::before {
@@ -734,6 +733,18 @@
   </div>
 
   <script>
+    // Garantir que a página comece no topo
+    window.addEventListener('load', function() {
+      window.scrollTo(0, 0);
+    });
+
+    // Também scroll para o topo se houver hash na URL
+    if (window.location.hash) {
+      window.addEventListener('load', function() {
+        window.scrollTo(0, 0);
+      });
+    }
+
     const start = Date.now();
     const end = start + 24*60*60*1000;
     const cdDisplay = document.getElementById('countdownDisplay');
